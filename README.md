@@ -6,6 +6,8 @@
 * cd flightplan
 * dotnet add package Microsoft.Azure.Cosmos
 * dotnet add package Mongodb.Driver
+* dotnet add package Microsoft.OpenAPI
+* dotnet add package Swashbuckle.AspNetCore.Annotations
 * dotnet build
 * dotnet run
 
@@ -67,3 +69,16 @@ Let the HTTP Verbs do the job of describing the action, just describe the entity
 ## Why are we using async calls?
 
 * Because depends on an external resource - the database.
+
+## Authentication
+
+* IN this we're using basicauthentication but an use others. This in program.cs were add auth
+* When set this up will see authorize button in swagger
+
+## Documentation
+
+* below in csproj
+
+```xml
+<GenerateDocumentationFile>true</GenerateDocumentationFile>
+```

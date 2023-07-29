@@ -20,7 +20,7 @@ namespace FlightPlanApi.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
        // [SwaggerResponse((int)HttpStatusCode.NoContent, "No flight plans have been filed with this system")]
         public async Task<IActionResult> FlightPlanList()
         {
@@ -34,7 +34,7 @@ namespace FlightPlanApi.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         [Route("{flightPlanId}")] //curly braces are variables
         public async Task<IActionResult> GetFlightFlightPlanById(string flightPlanId)
         {
@@ -76,7 +76,7 @@ namespace FlightPlanApi.Controllers
         /// <response code="500">The flight plan is valid but this system cannot process it</response>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         [Route("file")]
         public async Task<IActionResult> FileFlightPlan(FlightPlan flightPlan)
         {
@@ -93,7 +93,7 @@ namespace FlightPlanApi.Controllers
         }
 
         [HttpPut]
-       // [Authorize]
+        [Authorize]
         public async Task<IActionResult> UpdateFlightPlan(FlightPlan flightPlan)
         {
             var updateResult = await _database.UpdateFlightPlan(flightPlan.FlightPlanId, flightPlan);
@@ -109,7 +109,7 @@ namespace FlightPlanApi.Controllers
         }
 
         [HttpDelete]
-        //[Authorize]
+        [Authorize]
         [Route("{flightPlanId}")]
         public async Task<IActionResult> DeleteFlightPlan(string flightPlanId)
         {
@@ -123,7 +123,7 @@ namespace FlightPlanApi.Controllers
         }
 
         [HttpGet]
-       // [Authorize]
+        [Authorize]
         [Route("airport/departure/{flightPlanId}")]
         public async Task<IActionResult> GetFlightPlanDepartureAirport(string flightPlanId)
         {
@@ -138,7 +138,7 @@ namespace FlightPlanApi.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         [Route("route/{flightPlanId}")]
         public async Task<IActionResult> GetFlightPlanRoute(string flightPlanId)
         {
@@ -152,7 +152,7 @@ namespace FlightPlanApi.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         [Route("time/enroute/{flightPlanId}")]
         public async Task<IActionResult> GetFlightPlanTimeEnroute(string flightPlanId)
         {

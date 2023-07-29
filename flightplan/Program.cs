@@ -1,7 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication;
 using System.Reflection;
-//using FlightPlanApi.Authentication;
+using FlightPlanApi.Authentication;
 using FlightPlanApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,15 +11,48 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("flightplan", new OpenApiInfo
+    {
+        Title = "Flight Plan API",
+        Version = "v3",
+        Description = "Pluralsight Web API Demo Project"
+    });
+    options.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "basic",
+        In = ParameterLocation.Header,
+        Description = "Basic authorization header using Bearer scheme"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id  = "basicAuth"
+                }
+            },
+            new string[] {}
+        }
+    });
+    options.EnableAnnotations();
+
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
 builder.Services.AddCors();
-builder.Services.AddScoped<IDatabaseAdapter, MongoDbDatabase>(); // This means in the controller 
-//now just reference IDatabaseAdapter so refactoring to a new database doesn't require a change in the controller
-//what is addsingleton and is addscope better for me?
+builder.Services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>
+    ("BasicAuthentication", null);
+builder.Services.AddScoped<IDatabaseAdapter, MongoDbDatabase>();
 
-// Set up URLs that the app will listen on
 builder.WebHost.UseUrls("http://localhost:3000", "https://localhost:3001");
-
 
 var app = builder.Build();
 
@@ -27,16 +60,19 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/flightplan/swagger.json", "Flight Plan API"));
 }
-
-// we want to restrict this
-app.UseCors(options => options
-.AllowAnyOrigin()
-.AllowAnyMethod()
-.AllowAnyHeader());
+app.UseCors(config =>
+{
+    config
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
