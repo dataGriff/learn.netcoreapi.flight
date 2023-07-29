@@ -82,3 +82,24 @@ Let the HTTP Verbs do the job of describing the action, just describe the entity
 ```xml
 <GenerateDocumentationFile>true</GenerateDocumentationFile>
 ```
+
+## JS
+
+Promise where one function calls the next
+
+```javascript
+function one() {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      console.log("first function executed");
+      resolve();
+    }, 3000);
+  })
+}
+
+function two() {
+  console.log("second function executed");
+}
+
+one().then(two)
+```

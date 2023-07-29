@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using FlightPlanApi.Data;
 using FlightPlanApi.Models;
 using Microsoft.AspNetCore.Authorization;
-// using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace FlightPlanApi.Controllers
 {
@@ -21,7 +21,7 @@ namespace FlightPlanApi.Controllers
 
         [HttpGet]
         [Authorize]
-       // [SwaggerResponse((int)HttpStatusCode.NoContent, "No flight plans have been filed with this system")]
+        [SwaggerResponse((int)HttpStatusCode.NoContent, "No flight plans have been filed with this system")] // appears in swagger docs too
         public async Task<IActionResult> FlightPlanList()
         {
             var flightPlanList = await _database.GetAllFlightPlans();
@@ -47,6 +47,8 @@ namespace FlightPlanApi.Controllers
             return Ok(flightPlan);
         }
         
+        // the following generates a load of swagger docs
+
         /// <summary>
         /// Files a new flight plan with the system
         /// </summary>
