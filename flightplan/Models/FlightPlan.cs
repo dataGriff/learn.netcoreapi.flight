@@ -1,52 +1,62 @@
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace FlightPlanApi.Models
 {
     public class FlightPlan
     {
-        [JsonPropertyName("flight_plan_id")]
-        public string FlightPlanId { get; set; }
+        public FlightPlan()
+        {
+            FlightPlanId = Guid.NewGuid().ToString("N");
+            id = FlightPlanId;
+        }
 
-        [JsonPropertyName("aircraft_identification")]
+        [JsonProperty("flightPlanId")]
+        public string FlightPlanId { get; }
+
+        [JsonProperty("id")]
+        public string id { get; }
+
+        [JsonProperty("aircraftIdentification")]
         public string AircraftIdentification { get; set; }
 
-        [JsonPropertyName("aircraft_type")]
+        [JsonProperty("aircraftType")]
         public string AircraftType { get; set; }
 
-        [JsonPropertyName("airspeed")]
+        [JsonProperty("airspeed")]
         public int Airspeed { get; set; }
 
-        [JsonPropertyName("altitude")]
+        [JsonProperty("altitude")]
         public int Altitude { get; set; }
 
-        [JsonPropertyName("flight_type")]
+        [JsonProperty("flightType")]
         public string FlightType { get; set; }
 
-        [JsonPropertyName("fuel_hours")]
+        [JsonProperty("fuelHours")]
         public int FuelHours { get; set; }
 
-        [JsonPropertyName("fuel_minutes")]
+        [JsonProperty("fuelMinutes")]
         public int FuelMinutes { get; set; }
 
-        [JsonPropertyName("departure_time")]
+        [JsonProperty("departureTime")]
         public DateTime DepartureTime { get; set; }
 
-        [JsonPropertyName("estimated_arrival_time")]
+        [JsonProperty("arrivalTime")]
         public DateTime ArrivalTime { get; set; }
 
-        [JsonPropertyName("departing_airport")]
-        public string DepartureAirport { get; set; }
+        [JsonProperty("departingAirport")]
+        public string DepartingAirport { get; set; }
 
-        [JsonPropertyName("arrival_airport")]
+        [JsonProperty("arrivalAirport")]
         public string ArrivalAirport { get; set; }
 
-        [JsonPropertyName("route")]
+        [JsonProperty("route")]
         public string Route { get; set; }
 
-        [JsonPropertyName("remarks")]
+        [JsonProperty("remarks")]
         public string Remarks { get; set; }
 
-        [JsonPropertyName("number_onboard")]
+        [JsonProperty("numberOnboard")]
         public int NumberOnBoard { get; set; }
     }
 }

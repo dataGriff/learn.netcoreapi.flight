@@ -1,144 +1,106 @@
-// using Microsoft.Azure.Cosmos;
-// using FlightPlanApi.Models;
+using FlightPlanApi.Models;
+using Microsoft.Azure.Cosmos;
 
-// namespace FlightPlanApi.Data
-// {
-//     public class CosmosSQLDatabase : IDatabaseAdapter
-//     {
+namespace FlightPlanApi.Data
+{
+    public class CosmosSQLDatabase : IDatabaseAdapter
+    {
+        public CosmosClient _cosmosClient;
+        private Database _database;
+        private Container _container;
 
-//         private IMongoCollection<BsonDocument> GetCollection(
-//         string databaseName, string collectionName)
-//         {
-//             var client = new MongoClient();
-//             var database = client.GetDatabase(databaseName);
-//             var collection = database.GetCollection<BsonDocument>(collectionName);
-//             return collection;
-//         }
+        public CosmosSQLDatabase()
+        {
+            string endpoint = Environment.GetEnvironmentVariable("COSMOS_ENDPOINT");
+            string key = Environment.GetEnvironmentVariable("COSMOS_KEY");
 
-//         private FlightPlan ConvertBsonToFlightPlan(BsonDocument document)
-//         {
-//             if (document == null) return null;
+            // Initialize CosmosClient
+            _cosmosClient = new CosmosClient(endpoint, key);
 
-//             return new FlightPlan
-//             {
-//                 FlightPlanId = document["flight_plan_id"].AsString,
-//                 Altitude = document["altitude"].AsInt32,
-//                 Airspeed = document["airspeed"].AsInt32,
-//                 AircraftIdentification = document["aircraft_identification"].AsString,
-//                 AircraftType = document["aircraft_type"].AsString,
-//                 ArrivalAirport = document["arrival_airport"].AsString,
-//                 FlightType = document["flight_type"].AsString,
-//                 DepartureAirport = document["departing_airport"].AsString,
-//                 DepartureTime = document["departure_time"].AsBsonDateTime.ToUniversalTime(),
-//                 ArrivalTime = document["estimated_arrival_time"].AsBsonDateTime.ToUniversalTime(),
-//                 Route = document["route"].AsString,
-//                 Remarks = document["remarks"].AsString,
-//                 FuelHours = document["fuel_hours"].AsInt32,
-//                 FuelMinutes = document["fuel_minutes"].AsInt32,
-//                 NumberOnBoard = document["number_onboard"].AsInt32
-//             };
-//         }
+            // Call the async initialization method.
+            InitializeAsync().GetAwaiter().GetResult();
+        }
 
-//         public async Task<List<FlightPlan>> GetAllFlightPlans()
-//         {
-//             var collection = GetCollection("pluralsight", "flight_plans");
-//             var documents = collection.Find(_ => true).ToListAsync();
+        private async Task InitializeAsync()
+        {
+            _database = await _cosmosClient.CreateDatabaseIfNotExistsAsync("pluralsight");
+            _container = await _database.CreateContainerIfNotExistsAsync("flight_plans", "/flightPlanId");
+        }
 
-//             var flightPlanList = new List<FlightPlan>();
+        public async Task<List<FlightPlan>> GetAllFlightPlans()
+        {
+            var query = new QueryDefinition("SELECT * FROM c");
+            FeedIterator<FlightPlan> resultSet = _container.GetItemQueryIterator<FlightPlan>(query);
 
-//             if (documents == null) return flightPlanList;
+            List<FlightPlan> results = new List<FlightPlan>();
+            
+            while (resultSet.HasMoreResults)
+            {
+                FeedResponse<FlightPlan> response = await resultSet.ReadNextAsync();
+                results.AddRange(response.ToList());
+            }
 
-//             foreach (var document in await documents)
-//             {
-//                 flightPlanList.Add(ConvertBsonToFlightPlan(document));
-//             }
+            return results;
+        }
 
-//             return flightPlanList;
-//         }
+        public async Task<FlightPlan> GetFlightPlanById(string flightPlanId)
+        {
+            try
+            {
 
-//         public async Task<FlightPlan> GetFlightPlanById(string flightPlanId)
-//         {
-//             var collection = GetCollection("pluralsight", "flight_plans");
-//             var flightPlanCursor = await collection.FindAsync(
-//                 Builders<BsonDocument>.Filter.Eq("flight_plan_id", flightPlanId));
-//             var document = flightPlanCursor.FirstOrDefault();
-//             var flightPlan = ConvertBsonToFlightPlan(document);
+                ItemResponse<FlightPlan> response = await _container.ReadItemAsync<FlightPlan>(flightPlanId, new PartitionKey(flightPlanId));
+                return response.Resource;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+        }
 
-//             if (flightPlan == null)
-//             {
-//                 return new FlightPlan();
-//             }
+        public async Task<TransactionResult> FileFlightPlan(FlightPlan flightPlan)
+        {
+            try
+            {
+                Console.WriteLine("Creating new item in database...");
+                Console.WriteLine(flightPlan.FlightPlanId);
+                ItemResponse<FlightPlan> response = await _container.CreateItemAsync<FlightPlan>(flightPlan);
 
-//             return new FlightPlan();
-//         }
+                return TransactionResult.Success;
+            }
+            catch (Exception)
+            {
+                return TransactionResult.ServerError;
+            }
+        }
 
-//         public async Task<bool> FileFlightPlan(FlightPlan flightPlan)
-//         {
-//             var collection = GetCollection("pluralsight", "flight_plans");
+        public async Task<bool> DeleteFlightPlanById(string flightPlanId)
+        {
+            try
+            {
+                ItemResponse<FlightPlan> response = await _container.DeleteItemAsync<FlightPlan>(flightPlanId, new PartitionKey(flightPlanId));
+                return true;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return false;
+            }
+        }
 
-//             var document = new BsonDocument
-//             {
-//                 {"flight_plan_id", Guid.NewGuid().ToString("N") }, //here we are generating a unique id
-//                 {"altitude", flightPlan.Altitude },
-//                 {"airspeed", flightPlan.Airspeed },
-//                 {"aircraft_identification", flightPlan.AircraftIdentification },
-//                 {"aircraft_type", flightPlan.AircraftType },
-//                 {"arrival_airport", flightPlan.ArrivalAirport },
-//                 {"flight_type", flightPlan.FlightType },
-//                 {"departing_airport", flightPlan.DepartureAirport },
-//                 {"departure_time", flightPlan.DepartureTime },
-//                 {"estimated_arrival_time", flightPlan.ArrivalTime },
-//                 {"route", flightPlan.Route },
-//                 {"remarks", flightPlan.Remarks },
-//                 {"fuel_hours", flightPlan.FuelHours },
-//                 {"fuel_minutes", flightPlan.FuelMinutes },
-//                 {"number_onboard", flightPlan.NumberOnBoard }
-//             };
-
-//             try
-//             {
-//                 await collection.InsertOneAsync(document);
-//             }
-//             catch
-//             {
-//                 return false; //keeping return types simple makes db agnostic  if ever changed
-//             }
-
-//             return true; //keeping return types simple makes db agnostic if ever changed
-//         }
-
-//         public async Task<bool> DeleteFlightPlanById(string flightPlanId)
-//         {
-//             var collection = GetCollection("pluralsight", "flight_plans");
-//             var result = await collection.DeleteOneAsync(
-//                 Builders<BsonDocument>.Filter.Eq("flight_plan_id", flightPlanId));
-
-//             return result.DeletedCount > 0; //boolean again of if deleted or not keeps db agnostic
-//         }
-
-//         public async Task<bool> UpdateFlightPlan(string flightPlanId, FlightPlan flightPlan)
-//         {
-//             var collection = GetCollection("pluralsight", "flight_plans");
-//             var filter = Builders<BsonDocument>.Filter.Eq("flight_plan_id", flightPlanId);
-//             var update = Builders<BsonDocument>.Update
-//                 .Set("altitude", flightPlan.Altitude)
-//                 .Set("airspeed", flightPlan.Airspeed)
-//                 .Set("aircraft_identification", flightPlan.AircraftIdentification)
-//                 .Set("aircraft_type", flightPlan.AircraftType)
-//                 .Set("arrival_airport", flightPlan.ArrivalAirport)
-//                 .Set("flight_type", flightPlan.FlightType)
-//                 .Set("departing_airport", flightPlan.DepartureAirport)
-//                 .Set("departure_time", flightPlan.DepartureTime)
-//                 .Set("estimated_arrival_time", flightPlan.ArrivalTime)
-//                 .Set("route", flightPlan.Route)
-//                 .Set("remarks", flightPlan.Remarks)
-//                 .Set("fuel_hours", flightPlan.FuelHours)
-//                 .Set("fuel_minutes", flightPlan.FuelMinutes)
-//                 .Set("numberOnBoard", flightPlan.NumberOnBoard);
-//             var result = await collection.UpdateOneAsync(filter, update);
-
-//             return result.ModifiedCount > 0; //boolean again of if updated or not keeps db agnostic
-//         }
-
-//     }
-// }
+        public async Task<TransactionResult> UpdateFlightPlan(string flightPlanId, FlightPlan flightPlan)
+        {
+            try
+            {
+                ItemResponse<FlightPlan> response = await _container.ReplaceItemAsync(flightPlan, flightPlanId, new PartitionKey(flightPlanId));
+                return TransactionResult.Success;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return TransactionResult.NotFound;
+            }
+            catch (Exception)
+            {
+                return TransactionResult.ServerError;
+            }
+        }
+    }
+}

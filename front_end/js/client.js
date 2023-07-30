@@ -11,9 +11,8 @@ async function get_all_flight_plans() {
         }
     });
 
-    let html = 'No flight plans found. Add a flight plan by entering data in the flight plan form.';
-
     if(api_response.status == 204) {
+        let html = 'No flight plans found. Add a flight plan by entering data in the flight plan form.';
         document.getElementById('flight_plan_list').innerHTML = html;
         return;
     }
@@ -24,27 +23,27 @@ async function get_all_flight_plans() {
             '       <div class="card-header container-fluid">' +
             '           <div class="row">' +
             '              <div class="col-md-10">' +
-            '                   <h5>' + flight_plan.flight_type + ' flight plan from ' + flight_plan.departing_airport + ' to ' + flight_plan.arrival_airport + '</h5>' +
+            '                   <h5>' + flight_plan.flightType + ' flight plan from ' + flight_plan.departingAirport + ' to ' + flight_plan.arrival_airport + '</h5>' +
             '               </div>' +
             '               <div class="col-md-2 float-right">' +
             '                  <button class="btn btn-danger" style="margin-left: 1em" ' +
-            '                   onclick="delete_flight_plan(\'' + flight_plan.flight_plan_id + '\').then(get_all_flight_plans)">Delete</button>' +
+            '                   onclick="delete_flight_plan(\'' + flight_plan.flightPlanId + '\').then(get_all_flight_plans)">Delete</button>' +
             '              </div>' +
             '           </div>' +
             '    </div>' +
             '    <div class="card-body">' +
             '        <div class="row m-3 mb-4">' +
             '            <div class="col-3">' +
-            '                <h6>Flight Type:</h6> '+ flight_plan.flight_type +
+            '                <h6>Flight Type:</h6> '+ flight_plan.flightType +
             '            </div>' +
             '            <div class="col-3">' +
-            '                <h6>Aircraft Identification:</h6>' + flight_plan.aircraft_identification +
+            '                <h6>Aircraft Identification:</h6>' + flight_plan.aircraftIdentification +
             '            </div>' +
             '            <div class="col-3">' +
-            '                <h6>Aircraft Type:</h6> ' + flight_plan.aircraft_type +
+            '                <h6>Aircraft Type:</h6> ' + flight_plan.aircraftType +
             '            </div>' +
             '            <div class="col-3">' +
-            '                <h6>Fuel on Board:</h6>' + flight_plan.fuel_hours + ' hours ' + flight_plan.fuel_minutes +
+            '                <h6>Fuel on Board:</h6>' + flight_plan.fuelHours + ' hours ' + flight_plan.fuelMinutes +
             '            </div>' +
             '        </div>' +
             '        <div class="row m-3 mb-4">' +
@@ -55,10 +54,10 @@ async function get_all_flight_plans() {
             '                <h6>Filed Airspeed:</h6> ' + flight_plan.airspeed + ' knots' +
             '            </div>' +
             '            <div class="col-3">' +
-            '                <h6>Departure Time:</h6>' + new Date(flight_plan.departure_time).toLocaleString()  +
+            '                <h6>Departure Time:</h6>' + new Date(flight_plan.departureTime).toLocaleString()  +
             '            </div>' +
             '            <div class="col-3">' +
-            '                <h6>Estimated Arrival Time:</h6>' + new Date(flight_plan.estimated_arrival_time).toLocaleString()  +
+            '                <h6>Estimated Arrival Time:</h6>' + new Date(flight_plan.arrivalTime).toLocaleString()  +
             '            </div>' +
             '        </div>' +
             '        <div class="row m-3 mb-4">' +
@@ -69,7 +68,7 @@ async function get_all_flight_plans() {
             '        </div>' +
             '    </div>' +
             '    <div class="card-footer text-muted"> ' +
-            '    Flight Plan Id: ' +   flight_plan.flight_plan_id   +
+            '    Flight Plan Id: ' +   flight_plan.flightPlanId   +
             '   </div>' +
             '</div>'
 
@@ -79,8 +78,8 @@ async function get_all_flight_plans() {
 
 }
 
-async function delete_flight_plan(flight_plan_id) {
-    let response = await fetch(api_base_url + flight_plan_id, {
+async function delete_flight_plan(flightPlanId) {
+    let response = await fetch(api_base_url + flightPlanId, {
         method: 'DELETE',
         headers: {
             'Authorization': 'Basic ' + btoa(username + ":" + password)
@@ -93,8 +92,8 @@ async function delete_flight_plan(flight_plan_id) {
 }
 
 async function load_flight_plan() {
-    let flight_plan_id = document.getElementById("flightPlanId").value;
-    let api_response = await fetch(api_base_url + flight_plan_id, {
+    let flightPlanId = document.getElementById("flightPlanId").value;
+    let api_response = await fetch(api_base_url + flightPlanId, {
         method: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(username + ":" + password)
@@ -108,25 +107,25 @@ async function load_flight_plan() {
 
     let api_data = await api_response.json();
 
-    document.getElementById('tailNumber').value = api_data.aircraft_identification;
-    document.getElementById('aircraftType').value = api_data.aircraft_type;
+    document.getElementById('tailNumber').value = api_data.aircraftIdentification;
+    document.getElementById('aircraftType').value = api_data.aircraftType;
     document.getElementById('airspeed').value = api_data.airspeed;
     document.getElementById('altitude').value = api_data.altitude;
     document.getElementById('paxOnBoard').value = api_data.number_onboard;
-    document.getElementById('departureTime').value = api_data.departure_time.substring(0, api_data.departure_time.length - 1);
-    document.getElementById('arrivalTime').value = api_data.estimated_arrival_time.substring(0, api_data.estimated_arrival_time.length - 1);
-    document.getElementById('departAirport').value = api_data.departing_airport;
+    document.getElementById('departureTime').value = api_data.departureTime.substring(0, api_data.departureTime.length - 1);
+    document.getElementById('arrivalTime').value = api_data.estimatedArrivalTime.substring(0, api_data.estimatedArrivalTime.length - 1);
+    document.getElementById('departAirport').value = api_data.departingAirport;
     document.getElementById('arriveAirport').value = api_data.arrival_airport;
     document.getElementById('route').value = api_data.route;
     document.getElementById('remarks').value = api_data.remarks;
-    document.getElementById('fuelHours').value = api_data.fuel_hours;
-    document.getElementById('fuelMinutes').value = api_data.fuel_minutes;
+    document.getElementById('fuelHours').value = api_data.fuelHours;
+    document.getElementById('fuelMinutes').value = api_data.fuelMinutes;
     document.getElementById('paxOnBoard').value = api_data.number_onboard;
 
-    if (api_data.flight_type === 'VFR') {
+    if (api_data.flightType === 'VFR') {
         document.getElementById('inlineVFR').checked = true;
     }
-    else if (api_data.flight_type === 'IFR') {
+    else if (api_data.flightType === 'IFR') {
         document.getElementById('inlineIFR').checked = true;
     }
 
@@ -135,12 +134,12 @@ async function load_flight_plan() {
 }
 
 async function update_flight_plan() {
-    let selected_flight_type = 'Unknown';
+    let selected_flightType = 'Unknown';
     if(document.getElementById('inlineVFR').checked) {
-        selected_flight_type = 'VFR';
+        selected_flightType = 'VFR';
     }
     else if(document.getElementById('inlineVFR').checked) {
-        selected_flight_type = 'IFR';
+        selected_flightType = 'IFR';
     }
 
     let api_response = await fetch(api_base_url, {
@@ -150,20 +149,20 @@ async function update_flight_plan() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            flight_plan_id: document.getElementById("flightPlanId").value,
+            flightPlanId: document.getElementById("flightPlanId").value,
             altitude: Number(document.getElementById('altitude').value),
-            aircraft_identification: document.getElementById('tailNumber').value,
-            aircraft_type: document.getElementById('aircraftType').value,
+            aircraftIdentification: document.getElementById('tailNumber').value,
+            aircraftType: document.getElementById('aircraftType').value,
             airspeed: Number(document.getElementById('airspeed').value),
             arrival_airport: document.getElementById('arriveAirport').value,
-            flight_type: selected_flight_type,
-            departing_airport: document.getElementById('departAirport').value,
-            departure_time: new Date(document.getElementById('departureTime').value).toISOString(),
-            estimated_arrival_time: new Date(document.getElementById('arrivalTime').value).toISOString(),
+            flightType: selected_flightType,
+            departingAirport: document.getElementById('departAirport').value,
+            departureTime: new Date(document.getElementById('departureTime').value).toISOString(),
+            estimatedArrivalTime: new Date(document.getElementById('arrivalTime').value).toISOString(),
             route: document.getElementById('route').value,
             remarks: document.getElementById('remarks').value,
-            fuel_hours: Number(document.getElementById('fuelHours').value),
-            fuel_minutes: Number(document.getElementById('fuelMinutes').value),
+            fuelHours: Number(document.getElementById('fuelHours').value),
+            fuelMinutes: Number(document.getElementById('fuelMinutes').value),
             number_onboard: Number(document.getElementById('paxOnBoard').value)
         })
     });
@@ -174,12 +173,12 @@ async function update_flight_plan() {
 }
 
 async function file_flight_plan() {
-    let selected_flight_type = 'Unknown';
+    let selected_flightType = 'Unknown';
     if(document.getElementById('inlineVFR').checked) {
-        selected_flight_type = 'VFR';
+        selected_flightType = 'VFR';
     }
     else if(document.getElementById('inlineVFR').checked) {
-        selected_flight_type = 'IFR';
+        selected_flightType = 'IFR';
     }
 
     let api_response = await fetch(api_base_url + 'file', {
@@ -189,20 +188,20 @@ async function file_flight_plan() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            flight_plan_id: document.getElementById("flightPlanId").value,
+            flightPlanId: document.getElementById("flightPlanId").value,
             altitude: Number(document.getElementById('altitude').value),
-            aircraft_identification: document.getElementById('tailNumber').value,
-            aircraft_type: document.getElementById('aircraftType').value,
+            aircraftIdentification: document.getElementById('tailNumber').value,
+            aircraftType: document.getElementById('aircraftType').value,
             airspeed: Number(document.getElementById('airspeed').value),
             arrival_airport: document.getElementById('arriveAirport').value,
-            flight_type: selected_flight_type,
-            departing_airport: document.getElementById('departAirport').value,
-            departure_time: new Date(document.getElementById('departureTime').value).toISOString(),
-            estimated_arrival_time: new Date(document.getElementById('arrivalTime').value).toISOString(),
+            flightType: selected_flightType,
+            departingAirport: document.getElementById('departAirport').value,
+            departureTime: new Date(document.getElementById('departureTime').value).toISOString(),
+            estimatedArrivalTime: new Date(document.getElementById('arrivalTime').value).toISOString(),
             route: document.getElementById('route').value,
             remarks: document.getElementById('remarks').value,
-            fuel_hours: Number(document.getElementById('fuelHours').value),
-            fuel_minutes: Number(document.getElementById('fuelMinutes').value),
+            fuelHours: Number(document.getElementById('fuelHours').value),
+            fuelMinutes: Number(document.getElementById('fuelMinutes').value),
             number_onboard: Number(document.getElementById('paxOnBoard').value)
         })
     });

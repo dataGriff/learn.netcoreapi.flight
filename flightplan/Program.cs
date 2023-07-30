@@ -51,6 +51,7 @@ builder.Services.AddAuthentication("BasicAuthentication")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>
     ("BasicAuthentication", null);
 builder.Services.AddScoped<IDatabaseAdapter, MongoDbDatabase>();
+//builder.Services.AddScoped<IDatabaseAdapter, CosmosSQLDatabase>();
 
 builder.WebHost.UseUrls("http://localhost:3000", "https://localhost:3001");
 

@@ -27,7 +27,7 @@ namespace FlightPlanApi.Data
         {
             var collection = GetCollection("pluralsight", "flight_plans");
             var flightPlanCursor = await collection.FindAsync(
-                Builders<BsonDocument>.Filter.Eq("flight_plan_id", flightPlanId));
+                Builders<BsonDocument>.Filter.Eq("flightPlanId", flightPlanId));
             var document = flightPlanCursor.FirstOrDefault();
             var flightPlan = ConvertBsonToFlightPlan(document);
 
@@ -45,25 +45,25 @@ namespace FlightPlanApi.Data
 
             var document = new BsonDocument
             {
-                {"flight_plan_id", Guid.NewGuid().ToString("N") },
+                {"flightPlanId", flightPlan.FlightPlanId },
                 {"altitude", flightPlan.Altitude },
                 {"airspeed", flightPlan.Airspeed },
-                {"aircraft_identification", flightPlan.AircraftIdentification },
-                {"aircraft_type", flightPlan.AircraftType },
-                {"arrival_airport", flightPlan.ArrivalAirport },
-                {"flight_type", flightPlan.FlightType },
-                {"departing_airport", flightPlan.DepartureAirport },
-                {"departure_time", flightPlan.DepartureTime },
-                {"estimated_arrival_time", flightPlan.ArrivalTime },
+                {"aircraftIdentification", flightPlan.AircraftIdentification },
+                {"aircraftType", flightPlan.AircraftType },
+                {"arrivalAirport", flightPlan.ArrivalAirport },
+                {"flightType", flightPlan.FlightType },
+                {"departingAirport", flightPlan.DepartingAirport },
+                {"departureTime", flightPlan.DepartureTime },
+                {"estimatedArrivalTime", flightPlan.ArrivalTime },
                 {"route", flightPlan.Route },
                 {"remarks", flightPlan.Remarks },
-                {"fuel_hours", flightPlan.FuelHours },
-                {"fuel_minutes", flightPlan.FuelMinutes },
-                {"number_onboard", flightPlan.NumberOnBoard }
+                {"fuelHours", flightPlan.FuelHours },
+                {"fuelMinutes", flightPlan.FuelMinutes },
+                {"numberOnboard", flightPlan.NumberOnBoard }
             };
 
-            try
-            {
+            // try
+            // {
                 await collection.InsertOneAsync(document);
                 if (document["_id"].IsObjectId)
                 {
@@ -71,11 +71,11 @@ namespace FlightPlanApi.Data
                 }
 
                 return TransactionResult.BadRequest;
-            }
-            catch
-            {
-                return TransactionResult.ServerError;
-            }
+            // }
+            // catch
+            // {
+            //     return TransactionResult.ServerError;
+            // }
                         
         }
 
@@ -83,7 +83,7 @@ namespace FlightPlanApi.Data
         {
             var collection = GetCollection("pluralsight", "flight_plans");
             var result = await collection.DeleteOneAsync(
-                Builders<BsonDocument>.Filter.Eq("flight_plan_id", flightPlanId));
+                Builders<BsonDocument>.Filter.Eq("flightPlanId", flightPlanId));
 
             return result.DeletedCount > 0;
         }
@@ -91,21 +91,21 @@ namespace FlightPlanApi.Data
         public async Task<TransactionResult> UpdateFlightPlan(string flightPlanId, FlightPlan flightPlan)
         {
             var collection = GetCollection("pluralsight", "flight_plans");
-            var filter = Builders<BsonDocument>.Filter.Eq("flight_plan_id", flightPlanId);
+            var filter = Builders<BsonDocument>.Filter.Eq("flightPlanId", flightPlanId);
             var update = Builders<BsonDocument>.Update
                 .Set("altitude", flightPlan.Altitude)
                 .Set("airspeed", flightPlan.Airspeed)
-                .Set("aircraft_identification", flightPlan.AircraftIdentification)
-                .Set("aircraft_type", flightPlan.AircraftType)
-                .Set("arrival_airport", flightPlan.ArrivalAirport)
-                .Set("flight_type", flightPlan.FlightType)
-                .Set("departing_airport", flightPlan.DepartureAirport)
-                .Set("departure_time", flightPlan.DepartureTime)
-                .Set("estimated_arrival_time", flightPlan.ArrivalTime)
+                .Set("aircraftIdentification", flightPlan.AircraftIdentification)
+                .Set("aircraftType", flightPlan.AircraftType)
+                .Set("arrivalAirport", flightPlan.ArrivalAirport)
+                .Set("flightType", flightPlan.FlightType)
+                .Set("departingAirport", flightPlan.DepartingAirport)
+                .Set("departureTime", flightPlan.DepartureTime)
+                .Set("estimatedArrivalTime", flightPlan.ArrivalTime)
                 .Set("route", flightPlan.Route)
                 .Set("remarks", flightPlan.Remarks)
-                .Set("fuel_hours", flightPlan.FuelHours)
-                .Set("fuel_minutes", flightPlan.FuelMinutes)
+                .Set("fuelHours", flightPlan.FuelHours)
+                .Set("fuelMinutes", flightPlan.FuelMinutes)
                 .Set("numberOnBoard", flightPlan.NumberOnBoard);
             var result = await collection.UpdateOneAsync(filter, update);
 
@@ -138,21 +138,21 @@ namespace FlightPlanApi.Data
 
             return new FlightPlan
             {
-                FlightPlanId = document["flight_plan_id"].AsString,
+                //FlightPlanId = document["flightPlanId"].AsString,
                 Altitude = document["altitude"].AsInt32,
                 Airspeed = document["airspeed"].AsInt32,
-                AircraftIdentification = document["aircraft_identification"].AsString,
-                AircraftType = document["aircraft_type"].AsString,
-                ArrivalAirport = document["arrival_airport"].AsString,
-                FlightType = document["flight_type"].AsString,
-                DepartureAirport = document["departing_airport"].AsString,
-                DepartureTime = document["departure_time"].AsBsonDateTime.ToUniversalTime(),
-                ArrivalTime = document["estimated_arrival_time"].AsBsonDateTime.ToUniversalTime(),
+                AircraftIdentification = document["aircraftIdentification"].AsString,
+                AircraftType = document["aircraftType"].AsString,
+                ArrivalAirport = document["arrivalAirport"].AsString,
+                FlightType = document["flightType"].AsString,
+                DepartingAirport = document["departingAirport"].AsString,
+                DepartureTime = document["departureTime"].AsBsonDateTime.ToUniversalTime(),
+                ArrivalTime = document["estimatedArrivalTime"].AsBsonDateTime.ToUniversalTime(),
                 Route = document["route"].AsString,
                 Remarks = document["remarks"].AsString,
-                FuelHours = document["fuel_hours"].AsInt32,
-                FuelMinutes = document["fuel_minutes"].AsInt32,
-                NumberOnBoard = document["number_onboard"].AsInt32
+                FuelHours = document["fuelHours"].AsInt32,
+                FuelMinutes = document["fuelMinutes"].AsInt32,
+                NumberOnBoard = document["numberOnboard"].AsInt32
             };
         }
     }

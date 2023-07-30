@@ -1,527 +1,527 @@
 [
   {
-    "flight_plan_id": "f1d193ad0153491f9cf61cbe39c7db70",
+    "flightPlanId": "f1d193ad0153491f9cf61cbe39c7db70",
     "altitude": 12000,
     "airspeed": 128,
-    "aircraft_identification": "N67SVS",
-    "aircraft_type": "PA-34 Piper Seneca",
-    "arrival_airport": "KNZY",
-    "departing_airport": "KBXA",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N67SVS",
+    "aircraftType": "PA-34 Piper Seneca",
+    "arrivalAirport": "KNZY",
+    "departingAirport": "KBXA",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2022-07-08T00:26:45.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-07-08T03:49:45.000Z"
     },
     "route": "KBXA JOH J46 DMDUP J46 KNZY",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 41,
-    "number_onboard": 4
+    "fuelHours": 3,
+    "fuelMinutes": 41,
+    "numberOnboard": 4
   },
   {
-    "flight_plan_id": "210c87650c824aa2ad952cfbdaa74227",
+    "flightPlanId": "210c87650c824aa2ad952cfbdaa74227",
     "altitude": 8000,
     "airspeed": 180,
-    "aircraft_identification": "N02FZJ",
-    "aircraft_type": "PA-34 Piper Seneca",
-    "arrival_airport": "KMSS",
-    "departing_airport": "KLSE",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N02FZJ",
+    "aircraftType": "PA-34 Piper Seneca",
+    "arrivalAirport": "KMSS",
+    "departingAirport": "KLSE",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2021-07-18T08:00:14.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-07-18T10:19:14.000Z"
     },
     "route": "KLSE HDO V451 MACGE V451 KMSS",
     "remarks": "",
-    "fuel_hours": 2,
-    "fuel_minutes": 13,
-    "number_onboard": 1
+    "fuelHours": 2,
+    "fuelMinutes": 13,
+    "numberOnboard": 1
   },
   {
-    "flight_plan_id": "91bbc5b0b49c4b9fbfda249183072563",
+    "flightPlanId": "91bbc5b0b49c4b9fbfda249183072563",
     "altitude": 11000,
     "airspeed": 148,
-    "aircraft_identification": "N86QOM",
-    "aircraft_type": "LNC4 Lancair 4",
-    "arrival_airport": "KHUF",
-    "departing_airport": "KOZA",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N86QOM",
+    "aircraftType": "LNC4 Lancair 4",
+    "arrivalAirport": "KHUF",
+    "departingAirport": "KOZA",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-05-20T05:05:54.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-05-20T07:04:54.000Z"
     },
     "route": "KOZA DD V87 AVAPE V87 KHUF",
     "remarks": "",
-    "fuel_hours": 1,
-    "fuel_minutes": 15,
-    "number_onboard": 5
+    "fuelHours": 1,
+    "fuelMinutes": 15,
+    "numberOnboard": 5
   },
   {
-    "flight_plan_id": "2f5ccbad4f654c2d9356c9104d79b092",
+    "flightPlanId": "2f5ccbad4f654c2d9356c9104d79b092",
     "altitude": 12000,
     "airspeed": 119,
-    "aircraft_identification": "N993RD",
-    "aircraft_type": "SR20 Cirrus SR-20",
-    "arrival_airport": "KNMM",
-    "departing_airport": "KRBG",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N993RD",
+    "aircraftType": "SR20 Cirrus SR-20",
+    "arrivalAirport": "KNMM",
+    "departingAirport": "KRBG",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-02-24T18:04:14.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-02-24T21:16:14.000Z"
     },
     "route": "KRBG JL Q5 ULAKE Q5 KNMM",
     "remarks": "",
-    "fuel_hours": 2,
-    "fuel_minutes": 28,
-    "number_onboard": 1
+    "fuelHours": 2,
+    "fuelMinutes": 28,
+    "numberOnboard": 1
   },
   {
-    "flight_plan_id": "acef02ec9a2543fea759ab4b7daf170e",
+    "flightPlanId": "acef02ec9a2543fea759ab4b7daf170e",
     "altitude": 7000,
     "airspeed": 150,
-    "aircraft_identification": "N81SPP",
-    "aircraft_type": "SR20 Cirrus SR-20",
-    "arrival_airport": "KPAE",
-    "departing_airport": "KFTY",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N81SPP",
+    "aircraftType": "SR20 Cirrus SR-20",
+    "arrivalAirport": "KPAE",
+    "departingAirport": "KFTY",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2021-12-03T00:16:12.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-12-03T02:35:12.000Z"
     },
     "route": "KFTY CFB V124 EJFIB V124 KPAE",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 41,
-    "number_onboard": 2
+    "fuelHours": 3,
+    "fuelMinutes": 41,
+    "numberOnboard": 2
   },
   {
-    "flight_plan_id": "b0146178d98c495f9952616dd844cc2d",
+    "flightPlanId": "b0146178d98c495f9952616dd844cc2d",
     "altitude": 12000,
     "airspeed": 144,
-    "aircraft_identification": "N68LCA",
-    "aircraft_type": "PA-31 Piper Navajo",
-    "arrival_airport": "KGRI",
-    "departing_airport": "KUIN",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N68LCA",
+    "aircraftType": "PA-31 Piper Navajo",
+    "arrivalAirport": "KGRI",
+    "departingAirport": "KUIN",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2021-09-03T22:17:29.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-09-03T23:19:29.000Z"
     },
     "route": "KUIN YVR V189 IZOSI V189 KGRI",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 26,
-    "number_onboard": 3
+    "fuelHours": 3,
+    "fuelMinutes": 26,
+    "numberOnboard": 3
   },
   {
-    "flight_plan_id": "43a6dc0d4ceb4be79ad9d28806c0bd0a",
+    "flightPlanId": "43a6dc0d4ceb4be79ad9d28806c0bd0a",
     "altitude": 5000,
     "airspeed": 154,
-    "aircraft_identification": "N132VP",
-    "aircraft_type": "PA-31 Piper Navajo",
-    "arrival_airport": "KAYS",
-    "departing_airport": "KAXN",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N132VP",
+    "aircraftType": "PA-31 Piper Navajo",
+    "arrivalAirport": "KAYS",
+    "departingAirport": "KAXN",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2021-10-15T05:06:09.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-10-15T08:55:09.000Z"
     },
     "route": "KAXN SF G4 MACOW G4 KAYS",
     "remarks": "",
-    "fuel_hours": 4,
-    "fuel_minutes": 7,
-    "number_onboard": 5
+    "fuelHours": 4,
+    "fuelMinutes": 7,
+    "numberOnboard": 5
   },
   {
-    "flight_plan_id": "acacf1da6c6f4a058f07336dff971444",
+    "flightPlanId": "acacf1da6c6f4a058f07336dff971444",
     "altitude": 10000,
     "airspeed": 137,
-    "aircraft_identification": "N131HC",
-    "aircraft_type": "C172 Cessna Skyhawk",
-    "arrival_airport": "KCZK",
-    "departing_airport": "KPRG",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N131HC",
+    "aircraftType": "C172 Cessna Skyhawk",
+    "arrivalAirport": "KCZK",
+    "departingAirport": "KPRG",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-04-06T01:50:50.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-04-06T04:43:50.000Z"
     },
     "route": "KPRG SZL Q176 MAHIG Q176 KCZK",
     "remarks": "",
-    "fuel_hours": 1,
-    "fuel_minutes": 29,
-    "number_onboard": 5
+    "fuelHours": 1,
+    "fuelMinutes": 29,
+    "numberOnboard": 5
   },
   {
-    "flight_plan_id": "21d94f806de0430796c468edad69b46a",
+    "flightPlanId": "21d94f806de0430796c468edad69b46a",
     "altitude": 11000,
     "airspeed": 153,
-    "aircraft_identification": "N56QMW",
-    "aircraft_type": "L1P Commander 112",
-    "arrival_airport": "KEDN",
-    "departing_airport": "KITH",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N56QMW",
+    "aircraftType": "L1P Commander 112",
+    "arrivalAirport": "KEDN",
+    "departingAirport": "KITH",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2021-12-20T20:47:53.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-12-20T22:04:53.000Z"
     },
     "route": "KITH TCS J31 DOZXU J31 KEDN",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 16,
-    "number_onboard": 2
+    "fuelHours": 3,
+    "fuelMinutes": 16,
+    "numberOnboard": 2
   },
   {
-    "flight_plan_id": "5d4ddd58be6449fa8965ee383d30da95",
+    "flightPlanId": "5d4ddd58be6449fa8965ee383d30da95",
     "altitude": 5000,
     "airspeed": 175,
-    "aircraft_identification": "N80ODT",
-    "aircraft_type": "S22T Cirrus SR22 Turbo",
-    "arrival_airport": "KLIT",
-    "departing_airport": "KLGD",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N80ODT",
+    "aircraftType": "S22T Cirrus SR22 Turbo",
+    "arrivalAirport": "KLIT",
+    "departingAirport": "KLGD",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2022-02-16T09:15:17.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-02-16T10:45:17.000Z"
     },
     "route": "KLGD FN J2 ARETY J2 KLIT",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 56,
-    "number_onboard": 4
+    "fuelHours": 3,
+    "fuelMinutes": 56,
+    "numberOnboard": 4
   },
   {
-    "flight_plan_id": "defdba6400324db88448a53d077cf779",
+    "flightPlanId": "defdba6400324db88448a53d077cf779",
     "altitude": 6000,
     "airspeed": 136,
-    "aircraft_identification": "N18PRU",
-    "aircraft_type": "PA-34 Piper Seneca",
-    "arrival_airport": "KSPW",
-    "departing_airport": "KEBS",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N18PRU",
+    "aircraftType": "PA-34 Piper Seneca",
+    "arrivalAirport": "KSPW",
+    "departingAirport": "KEBS",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-04-15T11:50:10.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-04-15T15:14:10.000Z"
     },
     "route": "KEBS SEY Q902 MACSO Q902 KSPW",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 48,
-    "number_onboard": 2
+    "fuelHours": 3,
+    "fuelMinutes": 48,
+    "numberOnboard": 2
   },
   {
-    "flight_plan_id": "42a3ecf541414272b37f2c1c2839acd7",
+    "flightPlanId": "42a3ecf541414272b37f2c1c2839acd7",
     "altitude": 10000,
     "airspeed": 172,
-    "aircraft_identification": "N69HBC",
-    "aircraft_type": "S22T Cirrus SR22 Turbo",
-    "arrival_airport": "KRIU",
-    "departing_airport": "KGDJ",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N69HBC",
+    "aircraftType": "S22T Cirrus SR22 Turbo",
+    "arrivalAirport": "KRIU",
+    "departingAirport": "KGDJ",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-05-04T04:08:17.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-05-04T07:57:17.000Z"
     },
     "route": "KGDJ JAY Q1 EGUWU Q1 KRIU",
     "remarks": "",
-    "fuel_hours": 1,
-    "fuel_minutes": 42,
-    "number_onboard": 3
+    "fuelHours": 1,
+    "fuelMinutes": 42,
+    "numberOnboard": 3
   },
   {
-    "flight_plan_id": "13b7aee43be34f3fb93616bb13a23b36",
+    "flightPlanId": "13b7aee43be34f3fb93616bb13a23b36",
     "altitude": 7000,
     "airspeed": 151,
-    "aircraft_identification": "N48HEE",
-    "aircraft_type": "M20P Mooney M-20",
-    "arrival_airport": "KJQD",
-    "departing_airport": "KRMG",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N48HEE",
+    "aircraftType": "M20P Mooney M-20",
+    "arrivalAirport": "KJQD",
+    "departingAirport": "KRMG",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2021-07-27T03:33:10.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-07-27T07:23:10.000Z"
     },
     "route": "KRMG FS Q65 CHOMP Q65 KJQD",
     "remarks": "",
-    "fuel_hours": 2,
-    "fuel_minutes": 6,
-    "number_onboard": 1
+    "fuelHours": 2,
+    "fuelMinutes": 6,
+    "numberOnboard": 1
   },
   {
-    "flight_plan_id": "98dc2469723e43afb30d0cb34a696f8d",
+    "flightPlanId": "98dc2469723e43afb30d0cb34a696f8d",
     "altitude": 7000,
     "airspeed": 114,
-    "aircraft_identification": "N65CBM",
-    "aircraft_type": "LNC4 Lancair 4",
-    "arrival_airport": "KXWA",
-    "departing_airport": "KHEZ",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N65CBM",
+    "aircraftType": "LNC4 Lancair 4",
+    "arrivalAirport": "KXWA",
+    "departingAirport": "KHEZ",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2021-10-02T10:33:48.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-10-02T14:08:48.000Z"
     },
     "route": "KHEZ SMY V593 ECIWO V593 KXWA",
     "remarks": "",
-    "fuel_hours": 2,
-    "fuel_minutes": 23,
-    "number_onboard": 2
+    "fuelHours": 2,
+    "fuelMinutes": 23,
+    "numberOnboard": 2
   },
   {
-    "flight_plan_id": "df4e68af273c4588998bf7bc4a730378",
+    "flightPlanId": "df4e68af273c4588998bf7bc4a730378",
     "altitude": 7000,
     "airspeed": 118,
-    "aircraft_identification": "N26HRR",
-    "aircraft_type": "SR20 Cirrus SR-20",
-    "arrival_airport": "KOQN",
-    "departing_airport": "KPQN",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N26HRR",
+    "aircraftType": "SR20 Cirrus SR-20",
+    "arrivalAirport": "KOQN",
+    "departingAirport": "KPQN",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-06-17T06:04:03.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-06-17T09:53:03.000Z"
     },
     "route": "KPQN CVE J186 CFEMU J186 KOQN",
     "remarks": "",
-    "fuel_hours": 2,
-    "fuel_minutes": 2,
-    "number_onboard": 1
+    "fuelHours": 2,
+    "fuelMinutes": 2,
+    "numberOnboard": 1
   },
   {
-    "flight_plan_id": "a3a856c216b84b29bb4a15ab9fc45856",
+    "flightPlanId": "a3a856c216b84b29bb4a15ab9fc45856",
     "altitude": 6000,
     "airspeed": 160,
-    "aircraft_identification": "N83SVI",
-    "aircraft_type": "M20P Mooney M-20",
-    "arrival_airport": "KLHQ",
-    "departing_airport": "KCOF",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N83SVI",
+    "aircraftType": "M20P Mooney M-20",
+    "arrivalAirport": "KLHQ",
+    "departingAirport": "KCOF",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-05-26T19:43:11.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-05-27T00:42:11.000Z"
     },
     "route": "KCOF UK T224 MADJU T224 KLHQ",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 42,
-    "number_onboard": 3
+    "fuelHours": 3,
+    "fuelMinutes": 42,
+    "numberOnboard": 3
   },
   {
-    "flight_plan_id": "e7ab479de2124aae8f31943b1eb3a077",
+    "flightPlanId": "e7ab479de2124aae8f31943b1eb3a077",
     "altitude": 9000,
     "airspeed": 178,
-    "aircraft_identification": "N39RYH",
-    "aircraft_type": "S22T Cirrus SR22 Turbo",
-    "arrival_airport": "KEYF",
-    "departing_airport": "KVNW",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N39RYH",
+    "aircraftType": "S22T Cirrus SR22 Turbo",
+    "arrivalAirport": "KEYF",
+    "departingAirport": "KVNW",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2022-05-03T20:25:21.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-05-03T21:40:21.000Z"
     },
     "route": "KVNW MLE T285 IMVUW T285 KEYF",
     "remarks": "",
-    "fuel_hours": 2,
-    "fuel_minutes": 2,
-    "number_onboard": 3
+    "fuelHours": 2,
+    "fuelMinutes": 2,
+    "numberOnboard": 3
   },
   {
-    "flight_plan_id": "aabd4fa7a21240b18890e18e1cc5c6f8",
+    "flightPlanId": "aabd4fa7a21240b18890e18e1cc5c6f8",
     "altitude": 10000,
     "airspeed": 111,
-    "aircraft_identification": "N17CST",
-    "aircraft_type": "PA-34 Piper Seneca",
-    "arrival_airport": "KMRN",
-    "departing_airport": "KJHW",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N17CST",
+    "aircraftType": "PA-34 Piper Seneca",
+    "arrivalAirport": "KMRN",
+    "departingAirport": "KJHW",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2021-10-16T18:47:34.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-10-16T19:59:34.000Z"
     },
     "route": "KJHW MMY Q84 EJFIB Q84 KMRN",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 5,
-    "number_onboard": 1
+    "fuelHours": 3,
+    "fuelMinutes": 5,
+    "numberOnboard": 1
   },
   {
-    "flight_plan_id": "878c983c8c234a7fa57e5b52e775b05b",
+    "flightPlanId": "878c983c8c234a7fa57e5b52e775b05b",
     "altitude": 10000,
     "airspeed": 125,
-    "aircraft_identification": "N43GBM",
-    "aircraft_type": "SR20 Cirrus SR-20",
-    "arrival_airport": "KFOD",
-    "departing_airport": "KAXS",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N43GBM",
+    "aircraftType": "SR20 Cirrus SR-20",
+    "arrivalAirport": "KFOD",
+    "departingAirport": "KAXS",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2021-12-13T14:01:51.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-12-13T15:53:51.000Z"
     },
     "route": "KAXS CMI V17 BURFA V17 KFOD",
     "remarks": "",
-    "fuel_hours": 4,
-    "fuel_minutes": 30,
-    "number_onboard": 2
+    "fuelHours": 4,
+    "fuelMinutes": 30,
+    "numberOnboard": 2
   },
   {
-    "flight_plan_id": "6abd056ef5924c7a81220252edb9eb52",
+    "flightPlanId": "6abd056ef5924c7a81220252edb9eb52",
     "altitude": 10000,
     "airspeed": 117,
-    "aircraft_identification": "N54MQV",
-    "aircraft_type": "S22T Cirrus SR22 Turbo",
-    "arrival_airport": "KDMO",
-    "departing_airport": "KJNX",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N54MQV",
+    "aircraftType": "S22T Cirrus SR22 Turbo",
+    "arrivalAirport": "KDMO",
+    "departingAirport": "KJNX",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2021-11-22T13:38:12.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-11-22T14:53:12.000Z"
     },
     "route": "KJNX HDF R2 DMJSP R2 KDMO",
     "remarks": "",
-    "fuel_hours": 3,
-    "fuel_minutes": 7,
-    "number_onboard": 3
+    "fuelHours": 3,
+    "fuelMinutes": 7,
+    "numberOnboard": 3
   },
   {
-    "flight_plan_id": "e2f26b3520394caca886a01a662d42db",
+    "flightPlanId": "e2f26b3520394caca886a01a662d42db",
     "altitude": 8000,
     "airspeed": 140,
-    "aircraft_identification": "N73CUV",
-    "aircraft_type": "L1P Commander 112",
-    "arrival_airport": "KMGN",
-    "departing_airport": "KCOS",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N73CUV",
+    "aircraftType": "L1P Commander 112",
+    "arrivalAirport": "KMGN",
+    "departingAirport": "KCOS",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2022-04-13T03:46:57.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-04-13T05:18:57.000Z"
     },
     "route": "KCOS PFN V477 ICCOR V477 KMGN",
     "remarks": "",
-    "fuel_hours": 4,
-    "fuel_minutes": 37,
-    "number_onboard": 3
+    "fuelHours": 4,
+    "fuelMinutes": 37,
+    "numberOnboard": 3
   },
   {
-    "flight_plan_id": "332430eb12144b8bb77c1da8dea2892b",
+    "flightPlanId": "332430eb12144b8bb77c1da8dea2892b",
     "altitude": 10000,
     "airspeed": 173,
-    "aircraft_identification": "N23MHU",
-    "aircraft_type": "PA-31 Piper Navajo",
-    "arrival_airport": "KSDM",
-    "departing_airport": "KELD",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N23MHU",
+    "aircraftType": "PA-31 Piper Navajo",
+    "arrivalAirport": "KSDM",
+    "departingAirport": "KELD",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2021-08-05T03:14:58.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-08-05T05:33:58.000Z"
     },
     "route": "KELD OM V226 MAJGY V226 KSDM",
     "remarks": "",
-    "fuel_hours": 4,
-    "fuel_minutes": 33,
-    "number_onboard": 1
+    "fuelHours": 4,
+    "fuelMinutes": 33,
+    "numberOnboard": 1
   },
   {
-    "flight_plan_id": "8765fd8493184d6ca0550b8ebdc51d59",
+    "flightPlanId": "8765fd8493184d6ca0550b8ebdc51d59",
     "altitude": 9000,
     "airspeed": 143,
-    "aircraft_identification": "N20OPI",
-    "aircraft_type": "C182 Cessna Skylane",
-    "arrival_airport": "KRQE",
-    "departing_airport": "KRVS",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N20OPI",
+    "aircraftType": "C182 Cessna Skylane",
+    "arrivalAirport": "KRQE",
+    "departingAirport": "KRVS",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2021-09-30T22:27:32.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-10-01T01:01:32.000Z"
     },
     "route": "KRVS DMO Q40 COFCI Q40 KRQE",
     "remarks": "",
-    "fuel_hours": 1,
-    "fuel_minutes": 41,
-    "number_onboard": 1
+    "fuelHours": 1,
+    "fuelMinutes": 41,
+    "numberOnboard": 1
   },
   {
-    "flight_plan_id": "9de42fc39dac43b2a9c2f075c0523210",
+    "flightPlanId": "9de42fc39dac43b2a9c2f075c0523210",
     "altitude": 8000,
     "airspeed": 150,
-    "aircraft_identification": "N87TZX",
-    "aircraft_type": "PA-31 Piper Navajo",
-    "arrival_airport": "KMPO",
-    "departing_airport": "KEIK",
-    "flight_type": "VFR",
-    "departure_time": {
+    "aircraftIdentification": "N87TZX",
+    "aircraftType": "PA-31 Piper Navajo",
+    "arrivalAirport": "KMPO",
+    "departingAirport": "KEIK",
+    "flightType": "VFR",
+    "departureTime": {
       "$date": "2022-07-09T00:21:40.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2022-07-09T02:01:40.000Z"
     },
     "route": "KEIK TXO T662 OLVOW T662 KMPO",
     "remarks": "",
-    "fuel_hours": 4,
-    "fuel_minutes": 44,
-    "number_onboard": 4
+    "fuelHours": 4,
+    "fuelMinutes": 44,
+    "numberOnboard": 4
   },
   {
-    "flight_plan_id": "13a2f624684e4c98aac25963596d542b",
+    "flightPlanId": "13a2f624684e4c98aac25963596d542b",
     "altitude": 6000,
     "airspeed": 147,
-    "aircraft_identification": "N276TZ",
-    "aircraft_type": "PA-34 Piper Seneca",
-    "arrival_airport": "KPDT",
-    "departing_airport": "KLXL",
-    "flight_type": "IFR",
-    "departure_time": {
+    "aircraftIdentification": "N276TZ",
+    "aircraftType": "PA-34 Piper Seneca",
+    "arrivalAirport": "KPDT",
+    "departingAirport": "KLXL",
+    "flightType": "IFR",
+    "departureTime": {
       "$date": "2021-11-20T04:53:44.000Z"
     },
-    "estimated_arrival_time": {
+    "estimatedArrivalTime": {
       "$date": "2021-11-20T06:03:44.000Z"
     },
     "route": "KLXL SAC T300 AKGOS T300 KPDT",
     "remarks": "",
-    "fuel_hours": 4,
-    "fuel_minutes": 11,
-    "number_onboard": 4
+    "fuelHours": 4,
+    "fuelMinutes": 11,
+    "numberOnboard": 4
   }
 ]

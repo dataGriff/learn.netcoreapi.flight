@@ -8,6 +8,7 @@
 * dotnet add package Mongodb.Driver
 * dotnet add package Microsoft.OpenAPI
 * dotnet add package Swashbuckle.AspNetCore.Annotations
+* dotnet Newtonsoft.Json
 * dotnet build
 * dotnet run
 
@@ -103,3 +104,11 @@ function two() {
 
 one().then(two)
 ```
+
+## Weirdness with Cosmos - and lowest common denominator now when making things
+
+* In order to get cosmos to work had to remove underscores and get more consistency between csharp names and json property
+* Also had to have constructor for class to create id for the object
+* Also needed to create an id property
+* Also needed to use Newtonsoft.Json to make a lot of this work
+* **Note** in order to make things easier for me to deal with between db vendors will likely create id column always when making an entity and also just use pascalCase which is common in JSON anyway.
